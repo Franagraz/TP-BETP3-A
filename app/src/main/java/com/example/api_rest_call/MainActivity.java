@@ -2,10 +2,15 @@ package com.example.api_rest_call;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,28 +24,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ListActivity {
 
     ListView list;
     ListAdapter adaptador;
     ArrayList<String> autos = new ArrayList<>();
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, autos);
-
-        list = (ListView) findViewById(android.R.id.list);
-
-        list.setAdapter(adaptador);
-
-        this.getListadoVehiculos();
-
-    }
+    ArrayList<Auto> info_autos = new ArrayList<>();
 
     public void getListadoVehiculos(){
 
@@ -62,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Auto>> call, Response<List<Auto>> response) {
                 // Si el servidor responde correctamente puedo hacer uso de la respuesta esperada:
                 autos.clear();
+                info_autos.clear();
 
                 for (Auto auto: response.body()){
                     autos.add(auto.getMarca() + " - " + auto.getModelo());
+                    info_autos.add(auto);
                 }
 
                 // Aviso al base adapter que cambio mi set de datos.
@@ -81,7 +72,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        final Button buttonAgregar = findViewById(R.id.buttonAgregar);
+        buttonAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(getApplicationContext(), AgregarAutoActivity.class);
+                    startActivity(intent);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setTitle("Lista de vehículos");
+
+        adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, autos);
+        list = (ListView) findViewById(android.R.id.list);
+
+        list.setAdapter(adaptador);
+
+        this.getListadoVehiculos();
+
+    }
+
+    protected void onListItemClick(ListView l, View v, int position, long id){
+        super.onListItemClick(l,v,position,id);
+        Intent intent = new Intent(MainActivity.this, ModificarAutoActivity.class);
+        intent.putExtra("id",info_autos.get(position).getId());
+        startActivity(intent);
+    }
+
+
+
 
 
 

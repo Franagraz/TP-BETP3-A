@@ -19,6 +19,16 @@
             android:layout_width="fill_parent"
             android:layout_height="550dp" />
 
+        <Button
+            android:id="@+id/buttonAgregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar auto"
+            tools:layout_editor_absoluteX="159dp"
+            tools:layout_editor_absoluteY="462dp"
+            android:background="#6273D1"
+            android:textColor="#FFFFFF"
+            />
 
 
     </LinearLayout>

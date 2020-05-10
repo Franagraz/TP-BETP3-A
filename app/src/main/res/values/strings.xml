@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">API_Rest_Call</string>
+    <string name="volver_atras">Retroceder</string>
+    <string name="editar">Guardar automóvil</string>
+    <string name="guardar">Guardar</string>
+    <string name="agregar">Agregar automóvil</string>
+    <string name="eliminar">Eliminar automóvil</string>
 </resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingTop="100dp"
+    android:paddingRight="30dp"
+    android:paddingBottom="50dp"
+    tools:context=".AgregarAutoActivity">
+
+    <TextView
+        android:id="@+id/id_auto"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="70px"
+        android:textAlignment="inherit"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/marca_auto"
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:hint="Marca"
+            android:layout_marginTop="40dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/modelo_auto"
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:hint="Modelo"
+            android:textAlignment="center"
+            android:layout_marginTop="40dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonEditar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editar"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="462dp"
+        android:background="#33cc5a"
+        android:layout_margin="15dp"
+        />
+
+    <Button
+        android:id="@+id/buttonEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eliminar"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="462dp"
+        android:background="#ff0006"
+        android:layout_margin="15dp"
+        />
+
+    <Button
+        android:id="@+id/buttonVolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/volver_atras"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="462dp"
+        android:background="#00d2ff"
+        android:layout_margin="15dp"
+        />
+
+
+</LinearLayout>
