@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -30,6 +28,29 @@ public class MainActivity extends ListActivity {
     ListAdapter adaptador;
     ArrayList<String> autos = new ArrayList<>();
     ArrayList<Auto> info_autos = new ArrayList<>();
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setTitle("Lista de vehículos");
+
+        adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, autos);
+        list = (ListView) findViewById(android.R.id.list);
+
+        list.setAdapter(adaptador);
+
+        this.getListadoVehiculos();
+
+    }
+
+    protected void onListItemClick(ListView l, View v, int position, long id){
+        super.onListItemClick(l,v,position,id);
+        Intent intent = new Intent(MainActivity.this, ModificarAutoActivity.class);
+        intent.putExtra("id",info_autos.get(position).getId());
+        startActivity(intent);
+    }
 
     public void getListadoVehiculos(){
 
@@ -88,29 +109,6 @@ public class MainActivity extends ListActivity {
         });
 
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("Lista de vehículos");
-
-        adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, autos);
-        list = (ListView) findViewById(android.R.id.list);
-
-        list.setAdapter(adaptador);
-
-        this.getListadoVehiculos();
-
-    }
-
-    protected void onListItemClick(ListView l, View v, int position, long id){
-        super.onListItemClick(l,v,position,id);
-        Intent intent = new Intent(MainActivity.this, ModificarAutoActivity.class);
-        intent.putExtra("id",info_autos.get(position).getId());
-        startActivity(intent);
-    }
-
 
 
 

@@ -11,15 +11,6 @@
     android:paddingBottom="50dp"
     tools:context=".AgregarAutoActivity">
 
-    <TextView
-        android:id="@+id/id_auto"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:fontFamily="sans-serif-black"
-        android:textSize="70px"
-        android:textAlignment="inherit"
-        android:textColor="@color/colorPrimaryDark"/>
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
